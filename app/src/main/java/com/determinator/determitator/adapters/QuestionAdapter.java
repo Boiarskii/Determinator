@@ -1,6 +1,7 @@
 package com.determinator.determitator.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import com.determinator.determitator.R;
 import com.determinator.determitator.fragments.QuestionFragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by admin on 04.11.2015.
@@ -34,7 +36,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         String answer = answers.get(position);
 
@@ -44,6 +46,12 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         questionViewHolder.answer.setText(answer);
 
+        questionViewHolder.answer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                compareWithCorrectVariant(position);
+            }
+        });
     }
 
     @Override
@@ -56,6 +64,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         notifyItemInserted(getItemCount() - 1);
     }
 
+
     public String getAnswer(int position) {
         return answers.get(position);
     }
@@ -63,6 +72,20 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void removeAnswer(int position) {
         answers.remove(position);
         notifyItemRemoved(position);
+        notifyItemRangeChanged(position, getItemCount());
+    }
+
+    public void removeAllAnswers() {
+        answers.clear();
+        notifyDataSetChanged();
+    }
+
+    private void compareWithCorrectVariant(int position) {
+        if (getAnswer(position).equals(questionFragment.correctAnswer)) {
+            questionFragment.nextQuestion();
+        } else {
+            removeAnswer(position);
+        }
     }
 
     protected class QuestionViewHolder extends RecyclerView.ViewHolder {
