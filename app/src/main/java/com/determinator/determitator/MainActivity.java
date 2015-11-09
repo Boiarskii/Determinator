@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.determinator.determitator.fragments.QuestionFragment;
+import com.determinator.determitator.fragments.TestFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity
 
         //
         FragmentManager fragmentManager = getFragmentManager();
-        Fragment fragment = new QuestionFragment();
+        Fragment fragment = new TestFragment();
         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
     }
 

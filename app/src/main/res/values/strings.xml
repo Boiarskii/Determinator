@@ -92,4 +92,20 @@
         <item>Человек, путающий окончания</item>
 
     </string-array>
+
+    <string-array name="test_questions">
+        <item>Процессор</item>
+        <item>Операторы цикла</item>
+        <item>Векторное изображение</item>
+    </string-array>
+
+    <string-array name="test_answers">
+        <item>Управляет потоками данных посредством специальных команд</item>
+        <item>Плата в компьютере, имеющая самые большие размеры</item>
+        <item>Корпус, в котором находятся основные компоненты компьютера</item>
+
+        <item>for, while, repeat</item>
+        <item>if/else, case</item>
+        <item>sin(), cos()</item>
+    </string-array>
 </resources>

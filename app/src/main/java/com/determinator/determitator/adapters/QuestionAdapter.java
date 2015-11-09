@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.determinator.determitator.R;
+import com.determinator.determitator.fragments.MainQuestionFragment;
 import com.determinator.determitator.fragments.QuestionFragment;
 
 import java.util.ArrayList;
@@ -20,10 +21,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     ArrayList<String> answers;
 
-    QuestionFragment questionFragment;
+    MainQuestionFragment questionFragment;
 
-    public QuestionAdapter(QuestionFragment questionFragment) {
-        this.questionFragment = questionFragment;
+    public QuestionAdapter(MainQuestionFragment fragment) {
+        this.questionFragment = fragment;
         answers = new ArrayList<>();
     }
 

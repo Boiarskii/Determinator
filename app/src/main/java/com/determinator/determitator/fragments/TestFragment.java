@@ -15,16 +15,14 @@ import com.determinator.determitator.adapters.QuestionAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuestionFragment extends MainQuestionFragment {
+public class TestFragment extends MainQuestionFragment {
 
 
-
-    public QuestionFragment() {
+    public TestFragment() {
         // Required empty public constructor
     }
 
@@ -32,7 +30,6 @@ public class QuestionFragment extends MainQuestionFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_question, container, false);
 
         tvQuestion = (TextView) v.findViewById(R.id.tvQuestion);
@@ -44,16 +41,14 @@ public class QuestionFragment extends MainQuestionFragment {
 
         rvAnswers.setAdapter(questionAdapter);
 
-        fullQuestionList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.questions)));
-        fullAnswerList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.answers)));
+        fullQuestionList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.test_questions)));
+        fullAnswerList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.test_answers)));
 
         nextQuestion();
 
 
         return v;
     }
-
-
 
 
 }
