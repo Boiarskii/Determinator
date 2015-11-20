@@ -1,7 +1,10 @@
 package com.determinator.determitator.fragments;
 
 import android.app.Fragment;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.determinator.determitator.adapters.QuestionAdapter;
@@ -16,8 +19,11 @@ public abstract class MainQuestionFragment extends Fragment {
 
     TextView tvQuestion;
 
+    ImageView ivToolbar;
+
     protected ArrayList<String> fullQuestionList;
     protected ArrayList<String> fullAnswerList;
+    protected ArrayList<Drawable> fullImageList;
 
     public String correctAnswer;
 
@@ -54,5 +60,15 @@ public abstract class MainQuestionFragment extends Fragment {
         fullAnswerList.remove(0);
         fullAnswerList.remove(0);
         fullAnswerList.remove(0);
+
+
+        if (fullImageList != null) {
+            if (fullImageList.size() > 0) {
+                Log.d("MyLogs", "ivToolbar = " + ivToolbar);
+                ivToolbar.setImageDrawable(fullImageList.get(0));
+                fullImageList.remove(0);
+            }
+        }
+        //Сделать смену картинки при выборе игры
     }
 }

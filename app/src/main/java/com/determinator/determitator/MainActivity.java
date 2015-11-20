@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +22,10 @@ import com.determinator.determitator.fragments.TestFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    QuestionFragment questionFragment;
+    TestFragment testFragment;
+    Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +54,20 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //
-        FragmentManager fragmentManager = getFragmentManager();
-        Fragment fragment = new TestFragment();
-        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+        if (currentFragment == null) {
+            questionFragment = new QuestionFragment();
+            testFragment = new TestFragment();
+        }
+
+        if (currentFragment == null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.container, questionFragment).commit();
+            currentFragment = questionFragment;
+        } else {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.container, currentFragment).commit();
+        }
     }
 
     @Override
@@ -92,12 +108,19 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camara) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
+        switch (id) {
+            case R.id.nav_statistics:
+                break;
+            case R.id.nav_play:
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.container, questionFragment).commit();
+                currentFragment = questionFragment;
+                break;
+            case R.id.nav_test:
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.container, testFragment).commit();
+                currentFragment = testFragment;
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -95,7 +95,7 @@
 
     <string-array name="test_questions">
         <item>Процессор</item>
-        <item>Операторы цикла</item>
+        <item>Операторы цикла (Pascal)</item>
         <item>Векторное изображение</item>
     </string-array>
 
@@ -107,5 +107,9 @@
         <item>for, while, repeat</item>
         <item>if/else, case</item>
         <item>sin(), cos()</item>
+
+        <item>Изображение, описываемое графическими примитивами - точка, кривая и т.д.</item>
+        <item>Изображение, качество которого сильно зависит от степени масштабирования</item>
+        <item>Изображение, цель которого - указать какое-либо направление</item>
     </string-array>
 </resources>

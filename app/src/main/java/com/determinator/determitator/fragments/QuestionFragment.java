@@ -46,6 +46,7 @@ public class QuestionFragment extends MainQuestionFragment {
 
         fullQuestionList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.questions)));
         fullAnswerList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.answers)));
+        fullImageList = null;
 
         nextQuestion();
 

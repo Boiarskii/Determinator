@@ -1,15 +1,19 @@
 package com.determinator.determitator.fragments;
 
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.determinator.determitator.AssetHelper;
 import com.determinator.determitator.R;
 import com.determinator.determitator.adapters.QuestionAdapter;
 
@@ -32,6 +36,8 @@ public class TestFragment extends MainQuestionFragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_question, container, false);
 
+        ivToolbar = (ImageView) getActivity().findViewById(R.id.ivToolbar);
+
         tvQuestion = (TextView) v.findViewById(R.id.tvQuestion);
 
         rvAnswers = (RecyclerView) v.findViewById(R.id.rvAnswers);
@@ -43,6 +49,9 @@ public class TestFragment extends MainQuestionFragment {
 
         fullQuestionList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.test_questions)));
         fullAnswerList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.test_answers)));
+
+        AssetHelper assetHelper = AssetHelper.getInstance(getActivity());
+        fullImageList = assetHelper.getDrawableFromAsstets();
 
         nextQuestion();
 
