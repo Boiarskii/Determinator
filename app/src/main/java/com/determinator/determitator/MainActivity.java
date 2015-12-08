@@ -3,9 +3,11 @@ package com.determinator.determitator;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity
     TestFragment testFragment;
     Fragment currentFragment;
 
+    CoordinatorLayout coordinatorLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -55,19 +61,22 @@ public class MainActivity extends AppCompatActivity
 
         //
 
-        if (currentFragment == null) {
-            questionFragment = new QuestionFragment();
-            testFragment = new TestFragment();
-        }
+        questionFragment = new QuestionFragment();
+        testFragment = new TestFragment();
 
-        if (currentFragment == null) {
+        if (savedInstanceState == null) {
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.container, questionFragment).commit();
             currentFragment = questionFragment;
         } else {
-            FragmentManager fragmentManager = getFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.container, currentFragment).commit();
+            currentFragment = getFragmentManager().getFragment(savedInstanceState, "currentFragment");
+            getFragmentManager().beginTransaction().replace(R.id.container, currentFragment).commit();
         }
+    }
+
+    public void showSnackBar() {
+        Snackbar.make(coordinatorLayout, R.string.no_more_questions, Snackbar.LENGTH_SHORT)
+                .setAction("Action", null).show();
     }
 
     @Override
@@ -127,4 +136,13 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        getFragmentManager().putFragment(outState, "currentFragment", currentFragment);
+        super.onSaveInstanceState(outState);
+        Log.d("MyLogs", "onSaveInstanceState");
+    }
+
+
 }

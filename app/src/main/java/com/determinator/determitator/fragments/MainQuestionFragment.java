@@ -7,14 +7,12 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.determinator.determitator.MainActivity;
 import com.determinator.determitator.adapters.QuestionAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * Created by admin on 09.11.2015.
- */
 public abstract class MainQuestionFragment extends Fragment {
 
     TextView tvQuestion;
@@ -33,42 +31,46 @@ public abstract class MainQuestionFragment extends Fragment {
 
     public void nextQuestion() {
 
-        ArrayList<String> arrayListForShuffle = new ArrayList<>();
+        if (fullQuestionList.size() > 0) {
+            ArrayList<String> arrayListForShuffle = new ArrayList<>();
 
-        questionAdapter.removeAllAnswers();
+            questionAdapter.removeAllAnswers();
 
-        correctAnswer = null;
+            correctAnswer = null;
 
-        tvQuestion.setText(fullQuestionList.get(0));
-        fullQuestionList.remove(0);
+            tvQuestion.setText(fullQuestionList.get(0));
+            fullQuestionList.remove(0);
 
-        arrayListForShuffle.add(fullAnswerList.get(0));
-        arrayListForShuffle.add(fullAnswerList.get(1));
-        arrayListForShuffle.add(fullAnswerList.get(2));
+            arrayListForShuffle.add(fullAnswerList.get(0));
+            arrayListForShuffle.add(fullAnswerList.get(1));
+            arrayListForShuffle.add(fullAnswerList.get(2));
 
-        correctAnswer = arrayListForShuffle.get(0);
+            correctAnswer = arrayListForShuffle.get(0);
 
-        Collections.shuffle(arrayListForShuffle);
+            Collections.shuffle(arrayListForShuffle);
 
-        questionAdapter.addAnswer(arrayListForShuffle.get(0));
-        questionAdapter.addAnswer(arrayListForShuffle.get(1));
-        questionAdapter.addAnswer(arrayListForShuffle.get(2));
-
-
-        arrayListForShuffle.clear();
-
-        fullAnswerList.remove(0);
-        fullAnswerList.remove(0);
-        fullAnswerList.remove(0);
+            questionAdapter.addAnswer(arrayListForShuffle.get(0));
+            questionAdapter.addAnswer(arrayListForShuffle.get(1));
+            questionAdapter.addAnswer(arrayListForShuffle.get(2));
 
 
-        if (fullImageList != null) {
-            if (fullImageList.size() > 0) {
-                Log.d("MyLogs", "ivToolbar = " + ivToolbar);
-                ivToolbar.setImageDrawable(fullImageList.get(0));
-                fullImageList.remove(0);
+            arrayListForShuffle.clear();
+
+            fullAnswerList.remove(0);
+            fullAnswerList.remove(0);
+            fullAnswerList.remove(0);
+
+
+            if (fullImageList != null) {
+                if (fullImageList.size() > 0) {
+                    ivToolbar.setImageDrawable(fullImageList.get(0));
+                    fullImageList.remove(0);
+                }
+            } else {
+                ivToolbar.setImageResource(android.R.color.transparent);
             }
+        } else {
+            ((MainActivity) getActivity()).showSnackBar();
         }
-        //Сделать смену картинки при выборе игры
     }
 }

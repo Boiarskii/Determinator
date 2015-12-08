@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Determitator</string>
+    <string name="app_name">Курсач</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,6 +11,7 @@
     <string name="statistics">Статистика</string>
     <string name="play">Играть</string>
     <string name="knowledge_test">Проверка знаний</string>
+    <string name="no_more_questions">Вопросов больше нет</string>
 
     <string-array name="questions">
         <item>АБДРАГАН</item>
@@ -97,6 +98,13 @@
         <item>Процессор</item>
         <item>Операторы цикла (Pascal)</item>
         <item>Векторное изображение</item>
+        <item>ООП</item>
+        <item>Создатель языка Паскаль</item>
+        <item>Алгоритм</item>
+        <item>Объектно-ориентированный язык программирования</item>
+        <item>Массив</item>
+        <item>Ассемблер</item>
+        <item>Первый программист</item>
     </string-array>
 
     <string-array name="test_answers">
@@ -111,5 +119,33 @@
         <item>Изображение, описываемое графическими примитивами - точка, кривая и т.д.</item>
         <item>Изображение, качество которого сильно зависит от степени масштабирования</item>
         <item>Изображение, цель которого - указать какое-либо направление</item>
+
+        <item>Объектно-ориентированное программирование</item>
+        <item>Операция определения процессора</item>
+        <item>Открытое облако программ</item>
+
+        <item>Никлаус Вирт</item>
+        <item>Блез Паскаль</item>
+        <item>Фридрих Ницше</item>
+
+        <item>Алгоритм — набор инструкций, описывающих порядок действий для достижения результата</item>
+        <item>Частота биения сердца человека</item>
+        <item>Количество данных, которые может обработать программа</item>
+
+        <item>Java</item>
+        <item>Pascal</item>
+        <item>C</item>
+
+        <item>Cтруктура данных в виде набора компонентов, расположенных в памяти друг за другом</item>
+        <item>Внутренняя память устройства</item>
+        <item>Все переменные, задействованные в программе</item>
+
+        <item>Транслятор исходного текста программы, написанной на языке ассемблера, в программу на машинном языке</item>
+        <item>Альтернативное название блока питания</item>
+        <item>Фамилия создателя первого компьютера</item>
+
+        <item>Ада Байрон</item>
+        <item>Алан Тьюринг</item>
+        <item>Луций Сенека</item>
     </string-array>
 </resources>
